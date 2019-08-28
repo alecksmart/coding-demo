@@ -2,12 +2,10 @@
 
 This is the coding test for an inerview.
 
-[Desription](./GamePoints_-_challenge.pdf)
-
 ## Running app
 
 ```bash
-git checkout [repo_url]
+git checkout https://github.com/alecksmart/coding-demo
 npm install
 npm start
 ```
