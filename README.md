@@ -8,8 +8,8 @@ This is the coding test for an inerview.
 
 ```bash
 git checkout [repo_url]
-npm install
-npm start
+yarn install
+yarn start
 ```
 
 ## Running tests

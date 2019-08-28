@@ -1,5 +1,5 @@
 {
-  "name": "gametest",
+  "name": "coding-demo",
   "version": "1.0.0",
   "description": "Coding test",
   "main": "index.js",
@@ -9,19 +9,19 @@
     "eslint-fix": "eslint --fix \"src/**/*.js\"",
     "build": "webpack --mode production",
     "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "yarn test --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alecksmart/gametest.git"
+    "url": "git+https://github.com/alecksmart/coding-demo.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alecksmart/gametest/issues"
+    "url": "https://github.com/alecksmart/coding-demo/issues"
   },
-  "homepage": "https://github.com/alecksmart/gametest#readme",
+  "homepage": "https://github.com/alecksmart/coding-demo#readme",
   "dependencies": {
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
