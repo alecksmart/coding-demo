@@ -2,8 +2,6 @@
 
 This is the coding test for an inerview.
 
-[Desription](./GamePoints_-_challenge.pdf)
-
 ## Running app
 
 ```bash
