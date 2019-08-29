@@ -80,10 +80,6 @@ GameBoard.propTypes = {
   setNewGame: PropTypes.func.isRequired,
 };
 
-GameBoard.defaultProps = {
-
-};
-
 const mapStateToProps = state => ({
   isGameOver: state.pointsGame.isGameOver,
 });

@@ -43,6 +43,7 @@
     "css-loader": "^3.1.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.4.0",
     "eslint": "^6.0.1",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-react": "^1.1.7",
@@ -58,6 +59,7 @@
     "react-scripts": "^3.0.1",
     "react-test-renderer": "^16.8.6",
     "redux-devtools": "^3.5.0",
+    "redux-mock-store": "^1.5.3",
     "style-loader": "^0.23.1",
     "webpack": "^4.36.1",
     "webpack-cli": "^3.3.6",
@@ -71,6 +73,9 @@
       "coverageReporters": [
         "json",
         "html"
+      ],
+      "snapshotSerializers": [
+        "enzyme-to-json/serializer"
       ]
     }
   }

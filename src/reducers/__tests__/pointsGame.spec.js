@@ -1,6 +1,8 @@
+/* eslint-disable no-plusplus */
 /**
  * More to come likewise...
  */
+import sample from 'lodash/sample';
 import reducer, { initialState } from '../pointsGame';
 import {
   setNewGame,
@@ -44,4 +46,18 @@ describe('>>> Test reducers', () => {
     expect(result2.total).toEqual(expectedTotalPoints2);
   });
 
+  it('+++ make 10 clicks with random results to get Game Over', () => {
+    const types = ['A', 'B', 'C', 'D'];
+    let type;
+    let result = initialState;
+    const addPointAction = () => ({
+      type: setCellClicked,
+      payload: { logEntry: { type } },
+    });
+    for (let index = 0; index < 10; index++) {
+      type = sample(types);
+      result = reducer(result, addPointAction());
+    }
+    expect(result.isGameOver).toEqual(true);
+  });
 });

@@ -14,10 +14,7 @@ class Cell extends PureComponent {
   }
 
   onClick = () => {
-    const { isGameOver, onPointSelected, x, y, type } = this.props;
-    if (isGameOver) {
-      return;
-    }
+    const { onPointSelected, x, y, type } = this.props;
 
     this.setState({ clicked: true });
     onPointSelected({ x, y, type });

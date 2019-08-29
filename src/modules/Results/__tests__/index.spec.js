@@ -1,22 +1,45 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/order */
 import React from 'react';
-import store from '../../../store';
-import shallowWithStore from 'shallowWithStore';
+import { mockStore, shallowWithStore, mountWithStore } from 'testUtils';
+import initialState from 'initialState';
+
 import Results from '../index';
 
-const context = {
-  pointsGame: {
-    started: false, isGameOver: false, bonuses: 0, total: 30, highest: 0, log: [{ type: 'B' }],
-  },
+let wrap;
+let wrapper;
+let props = {
+  bonuses: 0,
+  total: 0,
+  highest: 0,
+  log: [],
 };
+let context = initialState;
+let stateChanged = {};
+let propsChanged = {};
+let useMount = true;
 
-describe('>>> Client entry point', () => {
-  it('+++ should capture the snapshot of Cell', () => {
-    const renderedValue = shallowWithStore(
-      <Results store={store} />,
-      context,
-    );
-    expect(renderedValue).toMatchSnapshot();
+const store = mockStore(initialState);
+
+describe('>>> Results snapshot', () => {
+  beforeEach(() => {
+    wrap = () => {
+      context = { ...initialState, ...stateChanged };
+      props = { ...props, ...propsChanged };
+      return (useMount ? mountWithStore : shallowWithStore)(<Results store={store} {...props} />, context);
+    };
+  });
+
+  afterEach(() => {
+    wrapper.unmount();
+    useMount = true;
+    stateChanged = {};
+    propsChanged = {};
+  });
+
+  it('+++ should capture the snapshot of Results', () => {
+    useMount = false;
+    wrapper = wrap();
+    expect(wrapper.debug()).toMatchSnapshot();
   });
 });
