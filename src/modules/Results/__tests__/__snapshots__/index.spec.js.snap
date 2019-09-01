@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`>>> Results snapshot +++ should capture the snapshot of Results 1`] = `
+exports[`>>> Results Module +++ should capture the snapshot of Results 1`] = `
 "<ContextProvider value={{...}}>
   <Results store={{...}} bonuses={0} total={0} highest={0} log={{...}} dispatch={[Function: dispatch]} />
 </ContextProvider>"

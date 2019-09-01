@@ -4,7 +4,7 @@ import React from 'react';
 import { mockStore, shallowWithStore, mountWithStore } from 'testUtils';
 import initialState from 'initialState';
 
-import Results from '../index';
+import GameBoard from '../index';
 
 let wrap;
 let store;
@@ -15,13 +15,13 @@ let stateChanged = {};
 let propsChanged = {};
 let useMount = true;
 
-describe('>>> Results Module', () => {
+describe('>>> GameBoard Module', () => {
   beforeEach(() => {
     wrap = () => {
       context = { ...initialState, ...stateChanged };
       props = { ...props, ...propsChanged };
       store = mockStore(context);
-      return (useMount ? mountWithStore : shallowWithStore)(<Results store={store} {...props} />, context);
+      return (useMount ? mountWithStore : shallowWithStore)(<GameBoard store={store} {...props} />, context);
     };
   });
 
@@ -32,16 +32,10 @@ describe('>>> Results Module', () => {
     propsChanged = {};
   });
 
-  it('+++ should capture the snapshot of Results', () => {
+  it('+++ should capture the snapshot', () => {
     useMount = false;
     store = mockStore(initialState);
     wrapper = wrap();
     expect(wrapper.debug()).toMatchSnapshot();
-  });
-
-  it('+++ print log correctly', () => {
-    stateChanged = { pointsGame: { log: [{ type: 'A' }, { type: 'B' }, { type: 'C' }] } };
-    wrapper = wrap();
-    expect(wrapper.find('.Result').length).toEqual(3);
   });
 });

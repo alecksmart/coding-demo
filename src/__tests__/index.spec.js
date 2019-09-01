@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import { unmount } from 'enzyme';
 import { mockStore, shallowWithStore, mountWithStore } from 'testUtils';
 import initialState from 'initialState';
-
 import GameBoard from '../modules/GameBoard/index';
 
 let store;
@@ -14,7 +13,7 @@ let wrapper;
 let context = initialState;
 let useMount = true;
 
-describe('>>> Client entry point', () => {
+describe('>>> Client entry point with store', () => {
   beforeEach(() => {
     wrap = () => (useMount ? mountWithStore : shallowWithStore)(
       <Provider store={store}>
@@ -30,8 +29,8 @@ describe('>>> Client entry point', () => {
   });
 
   it('+++ should capture the snapshot of GameBoard', () => {
-    store = mockStore(initialState);
     useMount = false;
+    store = mockStore(initialState);
     wrapper = wrap();
     expect(wrapper.debug()).toMatchSnapshot();
   });
@@ -42,5 +41,14 @@ describe('>>> Client entry point', () => {
     wrapper = wrap();
     const expectedText = 'Game Over, click the button above to try again...';
     expect(wrapper.find('.Toolbar-GameOver').text()).toEqual(expectedText);
+  });
+
+  it('+++ should create a new Game', () => {
+    store = mockStore(context);
+    wrapper = wrap();
+    const mapBefore = wrapper.find('GameBoard').state().pointsMap;
+    wrapper.find('GameBoard').instance().onNewGame();
+    const mapAfter = wrapper.find('GameBoard').state().pointsMap;
+    expect(mapBefore).not.toEqual(mapAfter);
   });
 });
