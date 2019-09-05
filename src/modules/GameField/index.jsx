@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-plusplus */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
@@ -32,8 +33,9 @@ class GameField extends PureComponent {
   render() {
     return (
       <div className="GameField">
-        <h1>Grab Points! Game</h1>
-        <div className="GameField GameField-Board">{this.renderMap()}</div>
+        <div className="GameField-Wrap">
+          <div className="GameField-Board">{this.renderMap()}</div>
+        </div>
       </div>
     );
   }
